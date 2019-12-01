@@ -104,7 +104,7 @@ html, body {
                             preloaded = true;
                             nextVid.src = urls[i];
                             nextVid.play();
-                            setTimeout(nextVid.pause, 500);
+                            setTimeout(function() { nextVid.pause() }, 500);
                         })
                         .catch(e)
                         {
