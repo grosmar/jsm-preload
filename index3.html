@@ -90,7 +90,7 @@ html, body {
             logDiv.innerHTML += e + "<br>";
         }
 
-        log("v6");
+        log("v7");
 
 
         function start()
@@ -132,7 +132,7 @@ html, body {
                             nextVid.src = URL.createObjectURL(blob);
                             nextVid.play();
                             //actVid.play();
-                            //setTimeout(function() { nextVid.pause(); actVid.play() }, 500);
+                            setTimeout(function() { nextVid.pause(); nextVid.currentTime = 0; }, 1000);
                         })
                         .catch(e)
                         {
