@@ -103,6 +103,8 @@ html, body {
                             console.log("preloaded");
                             preloaded = true;
                             nextVid.src = urls[i];
+                            nextVid.play();
+                            setTimeout(nextVid.pause, 500);
                         })
                         .catch(e)
                         {
