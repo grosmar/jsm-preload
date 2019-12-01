@@ -93,7 +93,7 @@ html, body {
         {
             /*let vid = document.getElementById("vid");
             vid.play();*/
-            log("started1");
+            log("started2");
             
 
             setInterval(function()
@@ -123,10 +123,10 @@ html, body {
                         {
                             log("next preloaded");
                             preloaded = true;
-                            setTimeout(function() { nextVid.src = urls[i]; }, 100);
+                            setTimeout(function() { nextVid.src = urls[i]; }, 500);
                             nextVid.src = urls[i];
                             nextVid.play();
-                            setTimeout(function() { nextVid.pause(); actVid.play() }, 100);
+                            setTimeout(function() { nextVid.pause(); actVid.play() }, 500);
                         })
                         .catch(e)
                         {
