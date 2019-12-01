@@ -102,6 +102,7 @@ html, body {
                         {
                             console.log("preloaded");
                             preloaded = true;
+                            setTimeout(function() { nextVid.src = urls[i]; }, 100);
                             nextVid.src = urls[i];
                             //nextVid.play();
                             //setTimeout(function() { nextVid.pause() }, 500);
