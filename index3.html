@@ -91,7 +91,7 @@ html, body {
             logDiv.innerHTML += e + "<br>";
         }
 
-        log("v9");
+        log("v10");
 
 
         function start()
@@ -162,6 +162,7 @@ html, body {
 
             fading = false;
 
+            actVid.muted = true;
             actVid.pause();
             actVid.src = ""; //remove if we will use canvas?
             nextVid.muted = false;
