@@ -84,6 +84,7 @@ html, body {
 
         var controller;
         var signal;
+        var fading = false;
 
         function log(e)
         {
@@ -159,6 +160,8 @@ html, body {
         function handleEnded() { 
             log( "act ended:" + actVid.id );
 
+            fading = false;
+
             actVid.pause();
             actVid.src = ""; //remove if we will use canvas?
             nextVid.muted = false;
@@ -182,8 +185,10 @@ html, body {
 
         setInterval(function()
         {
-            if (actVid.duration > 0 && actVid.currentTime >= actVid.duration - 1)
+            if (!fading && actVid.duration > 0 && actVid.currentTime >= actVid.duration - 1)
             {
+                log("fade");
+                fading = true;
                 
                 if ( !bufferingStarted )
                 {
