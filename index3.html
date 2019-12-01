@@ -44,7 +44,7 @@ html, body {
                     <source  type="video/mp4">
                 </video>
         </div>
-        <div class="video-container" id="vidcont1" style="top: 0%">
+        <div class="video-container" id="vidcont1" style="top: 50%">
             <video id="vid1" name="media" playsinline preload >
                 <source  type="video/mp4">
             </video>
@@ -90,7 +90,7 @@ html, body {
             logDiv.innerHTML += e + "<br>";
         }
 
-        log("v5");
+        log("v6");
 
 
         function start()
@@ -128,8 +128,9 @@ html, body {
                             log("next preloaded");
                             preloaded = true;
                             //setTimeout(function() { nextVid.src = urls[i]; }, 500);
+                            nextVid.muted = true;
                             nextVid.src = URL.createObjectURL(blob);
-                            //nextVid.play();
+                            nextVid.play();
                             //actVid.play();
                             //setTimeout(function() { nextVid.pause(); actVid.play() }, 500);
                         })
@@ -161,6 +162,7 @@ html, body {
 
             actVid.pause();
             actVid.src = "";
+            nextVid.muted = false;
             if ( !bufferingStarted )
             {
                 i++;
