@@ -44,7 +44,7 @@ html, body {
                     <source  type="video/mp4">
                 </video>
         </div>
-        <div class="video-container" id="vidcont1" style="top: 0%">
+        <div class="video-container" id="vidcont1" style="top: 20%">
             <video id="vid1" name="media" playsinline preload >
                 <source  type="video/mp4">
             </video>
@@ -91,7 +91,7 @@ html, body {
             logDiv.innerHTML += e + "<br>";
         }
 
-        log("v10");
+        log("v11");
 
 
         function start()
@@ -163,8 +163,6 @@ html, body {
             fading = false;
 
             actVid.muted = true;
-            actVid.pause();
-            actVid.src = ""; //remove if we will use canvas?
             nextVid.muted = false;
             
 
@@ -177,6 +175,9 @@ html, body {
             nextVid = actVid == vid1 ? vid2: vid1;
             bufferingStarted = false;
             preloaded = false;
+
+            actVid.pause();
+            actVid.src = ""; //remove if we will use canvas?
         }
 
         document.getElementById("start").onclick = start;
