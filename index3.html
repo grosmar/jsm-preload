@@ -10,7 +10,7 @@
 .video-container {
   position: absolute;
   top: 0;
-  left: 40%;
+  left: 50%;
   width: 50vw;
   height: 50vh;
   background-color: black;
@@ -27,6 +27,15 @@ html, body {
     padding: 0;
     margin: 0;
 }
+
+#log {
+    position: absolute;
+    left: 0;
+    top: 50px;
+    height: 80%;
+    width: 48%;
+    font-size: 10px;
+}
 </style>
         <button id="start" style="position: absolute; z-index:100; top:0; left:0; width: 100px;">Start</button>
         <div class="video-container" id="vidcont2">
@@ -38,6 +47,9 @@ html, body {
             <video id="vid1" controls="" name="media" playsinline preload >
                 <source  type="video/mp4">
             </video>
+        </div>
+        <div id="log">
+
         </div>
     </body>
 
@@ -56,6 +68,8 @@ html, body {
         var vid2 = document.getElementById("vid2");
         //vid2.style.visibility = "hidden";
 
+        var logDiv = document.getElementById("log");
+
         var actVid = vid1;
         var nextVid = vid2;
         var bufferingStarted = false;
@@ -69,11 +83,18 @@ html, body {
         var controller;
         var signal;
 
+        function log(e)
+        {
+            logDiv.innerHTML += e + "<br>";
+        }
+
 
         function start()
         {
             /*let vid = document.getElementById("vid");
             vid.play();*/
+            log("started");
+            
 
             setInterval(function()
             {
@@ -81,7 +102,7 @@ html, body {
                     if ( actVid.buffered.end(0) ==  actVid.duration && actVid.duration > 0 && !bufferingStarted )
                     {
                         bufferingStarted = true;
-                        console.log( "act buffered:", actVid.id, i );
+                        log( "act buffered:" + actVid.id + i );
                         i = i+1 >= urls.length ? 0 : i+1;
                         //nextVid.src = urls[i]
                         //nextVid.load(); //TODO: XHR!!!!!!!!!!!!!!!!!!!!!!!!!!!!
@@ -95,12 +116,12 @@ html, body {
                         } )
                         .then(function(response)
                         {
-                            console.log("fetched")
+                            log("next fetched")
                             return response.blob()
                         })
                         .then(function()
                         {
-                            console.log("preloaded");
+                            log("next preloaded");
                             preloaded = true;
                             setTimeout(function() { nextVid.src = urls[i]; }, 100);
                             nextVid.src = urls[i];
@@ -109,7 +130,7 @@ html, body {
                         })
                         .catch(e)
                         {
-                            console.warn(e);
+                            log(e);
                         };
 
 
@@ -131,11 +152,11 @@ html, body {
         }
 
         function handleEnded() { 
-            console.log( "act ended:", actVid.id );
+            log( "act ended:" + actVid.id );
 
             if ( bufferingStarted && !preloaded )
             {
-                console.log( "preload abort");
+                log( "preload abort");
                 controller.abort();
             }
 
@@ -148,7 +169,7 @@ html, body {
             nextVid.style.visibility = "visible";
             
             nextVid.play();
-            console.log( "next start:", nextVid.src, i);
+            log( "next start:" + i);
             actVid = nextVid;
             nextVid = actVid == vid1 ? vid2: vid1;
             bufferingStarted = false;
