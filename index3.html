@@ -38,6 +38,7 @@ html, body {
 }
 </style>
         <button id="start" style="position: absolute; z-index:100; top:0; left:0; width: 100px;">Start</button>
+        <button id="next" style="position: absolute; z-index:100; top:25; left:0; width: 100px;">Next</button>
         <div class="video-container" id="vidcont2">
                 <video id="vid2" controls="" name="media" playsinline preload >
                     <source  type="video/mp4">
@@ -89,7 +90,7 @@ html, body {
             logDiv.innerHTML += e + "<br>";
         }
 
-        log("v4");
+        log("v5");
 
 
         function start()
@@ -158,6 +159,15 @@ html, body {
         function handleEnded() { 
             log( "act ended:" + actVid.id );
 
+            actVid.pause();
+            actVid.src = "";
+            if ( !bufferingStarted )
+            {
+                i++;
+                nextVid.src = urls[i];
+
+            }
+
             if ( bufferingStarted && !preloaded )
             {
                 log( "preload abort");
@@ -182,6 +192,7 @@ html, body {
         }
 
         document.getElementById("start").onclick = start;
+        document.getElementById("next").onclick = handleEnded;
         vid1.addEventListener("ended", handleEnded, true);
         vid2.addEventListener("ended", handleEnded, true);
 
