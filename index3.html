@@ -34,7 +34,7 @@ html, body {
                     <source  type="video/mp4">
                 </video>
         </div>
-        <div class="video-container" id="vidcont1">
+        <div class="video-container" id="vidcont1" style="top: 50%">
             <video id="vid1" controls="" name="media" playsinline >
                 <source  type="video/mp4">
             </video>
@@ -54,7 +54,7 @@ html, body {
 
         var vid1 = document.getElementById("vid1");
         var vid2 = document.getElementById("vid2");
-        vid2.style.visibility = "hidden";
+        //vid2.style.visibility = "hidden";
 
         var actVid = vid1;
         var nextVid = vid2;
@@ -141,7 +141,7 @@ html, body {
                 nextVid.src = urls[i];
             }
 
-            actVid.style.visibility = "hidden";
+            //actVid.style.visibility = "hidden";
             nextVid.style.visibility = "visible";
             
             nextVid.play();
