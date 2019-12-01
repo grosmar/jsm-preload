@@ -88,7 +88,7 @@ html, body {
             logDiv.innerHTML += e + "<br>";
         }
 
-        log("v1");
+        log("v2");
 
 
         function start()
@@ -127,7 +127,7 @@ html, body {
                             preloaded = true;
                             //setTimeout(function() { nextVid.src = urls[i]; }, 500);
                             nextVid.src = URL.createObjectURL(blob);
-                            //nextVid.play();
+                            nextVid.play();
                             //setTimeout(function() { nextVid.pause(); actVid.play() }, 500);
                         })
                         .catch(e)
