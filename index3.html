@@ -43,7 +43,7 @@ html, body {
                     <source  type="video/mp4">
                 </video>
         </div>
-        <div class="video-container" id="vidcont1" style="top: 50%">
+        <div class="video-container" id="vidcont1" style="top: 0%">
             <video id="vid1" controls="" name="media" playsinline preload >
                 <source  type="video/mp4">
             </video>
@@ -66,7 +66,8 @@ html, body {
 
         var vid1 = document.getElementById("vid1");
         var vid2 = document.getElementById("vid2");
-        //vid2.style.visibility = "hidden";
+        vid1.style.zIndex = 1;
+        vid2.style.zIndex = 0;
 
         var logDiv = document.getElementById("log");
 
@@ -169,8 +170,8 @@ html, body {
                 nextVid.src = urls[i];
             }
 
-            //actVid.style.visibility = "hidden";
-            nextVid.style.visibility = "visible";
+            actVid.style.zIndex = 0;
+            nextVid.style.zIndex = 1;
             
             nextVid.play();
             log( "next start:" + i);
