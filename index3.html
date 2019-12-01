@@ -180,8 +180,16 @@ html, body {
 
         document.getElementById("start").onclick = start;
         document.getElementById("next").onclick = handleEnded;
-        vid1.addEventListener("ended", handleEnded, true);
-        vid2.addEventListener("ended", handleEnded, true);
+        //vid1.addEventListener("ended", handleEnded, true);
+        //vid2.addEventListener("ended", handleEnded, true);
+
+        setInterval(function()
+        {
+            if (fading && actVid.duration > 0 && actVid.currentTime >= actVid.duration - 0.5)
+            {
+                handleEnded();
+            }
+        },1);
 
         setInterval(function()
         {
