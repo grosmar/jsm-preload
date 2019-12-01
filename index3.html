@@ -125,8 +125,8 @@ html, body {
                             preloaded = true;
                             setTimeout(function() { nextVid.src = urls[i]; }, 100);
                             nextVid.src = urls[i];
-                            //nextVid.play();
-                            //setTimeout(function() { nextVid.pause() }, 500);
+                            nextVid.play();
+                            setTimeout(function() { nextVid.pause(); actVid.play() }, 100);
                         })
                         .catch(e)
                         {
