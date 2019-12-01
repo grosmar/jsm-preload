@@ -88,7 +88,7 @@ html, body {
             logDiv.innerHTML += e + "<br>";
         }
 
-        log("v2");
+        log("v3");
 
 
         function start()
@@ -128,6 +128,7 @@ html, body {
                             //setTimeout(function() { nextVid.src = urls[i]; }, 500);
                             nextVid.src = URL.createObjectURL(blob);
                             nextVid.play();
+                            actVid.play();
                             //setTimeout(function() { nextVid.pause(); actVid.play() }, 500);
                         })
                         .catch(e)
